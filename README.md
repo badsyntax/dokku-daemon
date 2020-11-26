@@ -32,10 +32,21 @@ As a user with access to `sudo`:
 * No authentication layer (local/container connections only)
 * Multiple client connections are supported but only one command will be processed at a given time
 
-Example command and response:
+## Example Usage
+
+Start the service:
+
+    systemctl start dokku-daemon
+
+Use `socat` to connect to the socket:
+
+    socat - UNIX-CONNECT:/var/run/dokku-daemon/dokku-daemon.sock
+
+Example command and response:    
 
     < apps:create demo-app
     > {"ok":true,"output":"Creating demo-app... done"}
+    
 
 ## Development
 
